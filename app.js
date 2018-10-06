@@ -54,18 +54,17 @@ app.get('/funcionarios/:id', function (request, response) {
 
 app.post('/funcionarios', function (request, response) {
   var nome = request.body.nome;
+  var cpf = request.body.cpf;
+  var cargo = request.body.cargo; 
+  var telefone = request.body.telefone;
   var email = request.body.email;
-  var idade = request.body.idade;
-  var dataContratacao = request.body.dataContratacao.split('/');
-
-  //formato dd/MM/yyyy
-  var objDate = new Date(dataContratacao[2], dataContratacao[1] - 1, dataContratacao[0]);
 
   var funcionario = {
     'nome': nome,
-    'email': email,
-    'idade': idade,
-    'dataContratacao': objDate
+    'cpf': cpf, 
+    'cargo': cargo,
+    'telefone': telefone,
+    'email': email
   };
 
   Funcionario.create(funcionario, function (erro, funcionario) {
@@ -89,13 +88,11 @@ app.put('/funcionarios', function (request, response) {
     else {
 
       var funcionario_upd = funcionario;
-      var dataContratacao = request.body.dataContratacao.split('/');
-      var objDate = new Date(dataContratacao[2], dataContratacao[1] - 1, dataContratacao[0]);
-
       funcionario_upd.nome = request.body.nome;
+      funcionario_upd.cpf = request.body.cpf;
+      funcionario_upd.cargo = request.body.cargo;
+      funcionario_upd.telefone = request.body.telefone;
       funcionario_upd.email = request.body.email;
-      funcionario_upd.dataContratacao = objDate;
-      funcionario_upd.idade = request.body.idade;
 
       funcionario_upd.save(function (erro, funcionario) {
         if (erro) {

@@ -5,9 +5,10 @@ module.exports = function (app) {
 
     var funcionario = Schema({
         nome: { type: String, required: true },
-        email: { type: String },
-        idade: { type: Number },
-        dataContratacao: { type: Date }
+        cpf: { type: String },
+        cargo: { type: String },
+        telefone: { type: Number },
+        email: { type: String }
     });
     return mongoose.model('funcionarios', funcionario);
 };
