@@ -54,7 +54,6 @@ app.get('/funcionarios/:id', function (request, response) {
 
 app.post('/funcionarios', function (request, response) {
   var nome = request.body.nome;
-  console.log(request);
   var email = request.body.email;
   var idade = request.body.idade;
   var dataContratacao = request.body.dataContratacao.split('/');
